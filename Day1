@@ -1,0 +1,149 @@
+Problem 1
+
+#include <bits/stdc++.h>
+
+void setZeros(vector<vector<int>> &m)
+{
+	// Write your code here.
+	vector<pair<int,int>>v;
+	for(int i=0;i<m.size();i++){
+		for(int j=0;j<m[i].size();j++){
+			if(m[i][j]==0){
+				v.push_back(make_pair(i,j));
+			}
+		}
+	}
+	for(int i=0;i<v.size();i++){
+		for(int j=0;j<m[0].size();j++){
+			m[v[i].first][j]=0;
+		}
+		for(int j=0;j<m.size();j++){
+			m[j][v[i].second]=0;
+		}
+	}
+}
+
+
+
+
+Problem 2   Pascal's triangle
+
+
+#include <bits/stdc++.h>
+
+vector<vector<long long int>> printPascal(int n) 
+{
+  vector<vector<long long int>>ans;
+  for(int i=0;i<n;i++){
+    ans.push_back(vector<long long int>(i+1,1));
+  }
+  for(int i=2;i<n;i++){
+    for(int j=1;j<ans[i].size()-1;j++){
+      ans[i][j]=ans[i-1][j-1]+ans[i-1][j];
+    }
+  }
+  return ans;
+}
+
+
+
+Problem 3
+
+#include <bits/stdc++.h> 
+vector<int> nextPermutation(vector<int> &p, int n)
+{
+    //  Write your code here.
+    vector<int>ans;
+    int l,k;
+    for(k=p.size()-2;k>=0;k--){
+        if(p[k+1]>p[k]){
+            break;
+        }
+    }
+    if(k<0){
+        reverse(p.begin(),p.end());
+    }
+    else{
+        for(l=n-1;l>k;l--){
+            if(p[l]>p[k]){
+                break;
+            }
+        }
+        swap(p[k],p[l]);
+        reverse(p.begin()+k+1,p.end());
+    }
+
+
+    // next_permutation(p.begin(),p.end());
+    return p;
+
+}
+
+
+problem 4   Kadaney's Algo
+
+#include <bits/stdc++.h>
+long long maxSubarraySum(int a[], int n) {
+    long long ans=0,sum=0;
+    for(int i=0;i<n;i++){
+        sum+=a[i];
+        if (ans < sum) {
+          ans = sum;
+        }
+        if (sum < 0) {
+          sum = 0;
+        }
+    }
+    // if(ans<0)ans=0;
+    return ans;
+}
+
+
+Problem 5 DNFalgo
+
+#include <bits/stdc++.h> 
+void sort012(int *a, int n)
+{
+   //   Write your code here
+   int low=0,mid=0,high=n-1;
+   while(mid<=high){
+      if(a[mid]==0){
+         swap(a[mid],a[low]);
+         low++;mid++;
+      }
+      else if(a[mid]==1){
+         mid++;
+      }
+      else if(a[mid]==2){
+         swap(a[mid],a[high]);
+         high--;
+      }
+   }
+
+}
+
+
+
+Problem 6 Selling Stock
+
+#include <bits/stdc++.h> 
+void sort012(int *a, int n)
+{
+   //   Write your code here
+   int low=0,mid=0,high=n-1;
+   while(mid<=high){
+      if(a[mid]==0){
+         swap(a[mid],a[low]);
+         low++;mid++;
+      }
+      else if(a[mid]==1){
+         mid++;
+      }
+      else if(a[mid]==2){
+         swap(a[mid],a[high]);
+         high--;
+      }
+   }
+
+}
+
